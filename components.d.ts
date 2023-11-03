@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Advertise: typeof import('./src/components/bottom/Advertise.vue')['default']
+    Block1: typeof import('./src/components/Block1.vue')['default']
     BtnMagic: typeof import('./src/components/littleTool/BtnMagic.vue')['default']
     Card: typeof import('./src/components/Card/Card.vue')['default']
     Card_admin: typeof import('./src/components/Card/Card_admin.vue')['default']
@@ -35,6 +36,20 @@ declare module '@vue/runtime-core' {
     SeasonBtn: typeof import('./src/components/SeasonBtn.vue')['default']
     SeasonBtn_admin: typeof import('./src/components/homepage_admin/SeasonBtn_admin.vue')['default']
     TabMagic: typeof import('./src/components/TabMagic/TabMagic.vue')['default']
+    Test: typeof import('./src/components/Test.vue')['default']
+    Test1: typeof import('./src/components/test/Test1.vue')['default']
+    'Test1 copy': typeof import('./src/components/Test1 copy.vue')['default']
+    Test2: typeof import('./src/components/test/Test2.vue')['default']
+    'Test2 copy': typeof import('./src/components/Test2 copy.vue')['default']
+    Test3: typeof import('./src/components/test/Test3.vue')['default']
+    'Test3 copy': typeof import('./src/components/Test3 copy.vue')['default']
+    'Test3 copy 2': typeof import('./src/components/Test3 copy 2.vue')['default']
+    'Test3 copy 3': typeof import('./src/components/Test3 copy 3.vue')['default']
+    'Test3 copy 4': typeof import('./src/components/Test3 copy 4.vue')['default']
+    Test4: typeof import('./src/components/test/Test4.vue')['default']
+    Test5: typeof import('./src/components/test/Test5.vue')['default']
+    Test6: typeof import('./src/components/test/Test6.vue')['default']
+    Test7: typeof import('./src/components/test/Test7.vue')['default']
     WaterfallFlow: typeof import('./src/components/WaterfallFlow/WaterfallFlow.vue')['default']
     WorkCard: typeof import('./src/components/admin/ReviewSubmissions/WorkCard.vue')['default']
   }

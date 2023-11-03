@@ -1,69 +1,73 @@
 <template>
-    <div class="home">
-        <NavHeader></NavHeader>
-        <div class="container" style="position: relative; height: 100%; width: 100%; perspective: 1200px;">
-            <router-view v-slot="{ Component }" class="router-view" style="position: absolute; height: 100%; width: 100%;">
-                <transition name="fade">
-                    <keep-alive include="homepage">
-                        <component class="components" :is="Component" />
-                    </keep-alive>
-                </transition>
-            </router-view>
-        </div>
+    <div class="home" @scroll="handleScroll">
+        <Test1></Test1>
+        <Test2></Test2>
+        <Test3></Test3>
+        <Test4></Test4>
+        <Test5></Test5>
+        <Test6></Test6>
+        <Test7></Test7>
     </div>
 </template>
 
-<script>
-import NavHeader from '@/components/NavHeader.vue'
+<script setup>
+import { ref, reactive, onMounted, provide } from 'vue'
+import Test1 from '@/components/test/Test1.vue'
+import Test2 from '@/components/test/Test2.vue'
+import Test3 from '@/components/test/Test3.vue'
+import Test4 from '@/components/test/Test4.vue'
+import Test5 from '@/components/test/Test5.vue'
+import Test6 from '@/components/test/Test6.vue'
+import Test7 from '@/components/test/Test7.vue'
 
-export default {
-    components: [
-        NavHeader
-    ],
-    data() {
-        return {
+const ScrollArea = reactive({
+    // scrollHeight >= viewHeight + scrollTop
+    // 内容区域（滚动区域）总高度
+    scrollHeight: 0,
+    // 视口（父元素）的高度
+    viewHeight: 0,
+    // 滚动了多少高度
+    scrollTop: 0
+})
 
-        }
-    },
-    methods: {
+provide('ScrollArea', ScrollArea)
 
-    },
-
+const handleScroll = (e)=>{
+    // console.log(ScrollArea)
+    ScrollArea.scrollHeight = e.target.scrollHeight
+    ScrollArea.viewHeight = e.target.offsetHeight
+    ScrollArea.scrollTop = e.target.scrollTop
 }
+
 </script>
 
 
 <style scoped>
-.home {
+.home{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-}
 
-.container {
-    flex: 1;
-}
-
-.router-view {
+    background-color: pink;
+    /* 火狐没有overlay auto垫底 */
     overflow: auto;
     overflow: overlay;
 }
 
-.components {
-    transition: .3s;
-    transition-delay: .3s;
+/* 适用于 WebKit */
+.home::-webkit-scrollbar {
+  width: 8px;
 }
 
-.fade-enter-from {
-    opacity: .0;
-    transform: translateY(10%);
-    /* transform: rotate3d(0,0,1,60deg); */
+.home::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 4px;
+
 }
 
-.fade-leave-to {
-    opacity: .0;
-    transform: translateX(-20%);
-    transition-delay: .0s;
-    /* transform: rotate3d(0,0,1,60deg); */
-}</style>
+.home::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+</style>

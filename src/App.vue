@@ -22,19 +22,11 @@
     data() {
       return {
         zhCn: zhCn,
-        cacheArray: [
-          'seasonBtn/0.svg',
-          'seasonBtn/1.svg',
-          'seasonBtn/2.svg',
-          'seasonBtn/3.svg',
-        ]
+        
       }
     },
     mounted() {
-      for (let i of this.cacheArray) {
-        let img = document.createElement('img')
-        img.src = pubuse(i)
-      }
+      
     }
   }
 </script>

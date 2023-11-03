@@ -1,39 +1,11 @@
-import { createApp,reactive } from 'vue'
-import App from './App.vue'
-import router from './router'
-import './utils/rem'
-import '@/utils/global_styles/main.css'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import TabMagic from '@/components/TabMagic/TabMagic.vue'
-import Pop from '@/components/Pop/Pop.vue'
-import Protocol from '@/components/littleTool/Protocol.vue'
-import SeasonBtn from '@/components/SeasonBtn.vue'
-import ImgZoom from '@/components/ImgZoom/ImgZoom.vue'
-import store from './store'
-const components = [
-  TabMagic,
-  Pop,
-  Protocol,
-  SeasonBtn,
-  ImgZoom
-]
-const app = createApp(App)
-components.forEach(item => {
-  app.component(item.name,item)
-})
+import { createApp } from "vue";
+import App from "./App.vue";
 
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
+// 路由，自定义组件，等一系列配置注册全部放到了“自定义插件”种
+import MyPlugins from "@/plugins";
 
-// 全局变量
-const globalData = reactive({
-  contestId: -1,
-  prizes: -1,
-})
+const app = createApp(App);
 
-// 提供全局变量
-app.provide('globalData', globalData)
-app.use(router)
-app.use(store)
-app.mount('#app')
+app.use(MyPlugins);
+
+app.mount("#app");
