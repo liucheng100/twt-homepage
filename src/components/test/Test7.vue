@@ -11,7 +11,14 @@
 <style scoped>
 .Test7{
     width: 100%;
-    height: 100px;
+    /* 100vh是innerbox的高度， 500px是你希望滚动时吸附的一个距离 */
+    height: 100vh;
+    /* 若最外层不需要sticky则需要给一个定位，因为这样才有z-index=0默认生效 */
+    position: relative;
+    
+    
+    /* border为演示内容 */
+    border: solid 14px rgb(6, 110, 98);
 }
 img{
     height: 100%;

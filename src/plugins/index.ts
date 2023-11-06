@@ -3,7 +3,7 @@
 import { App } from "vue";
 
 // 使用rem工具, 可以直接用px适配
-import "@/utils/rem";
+// import "@/utils/rem";
 // 导入全局样式
 import "@/utils/global_styles/main.css";
 // elePlus
