@@ -1,5 +1,5 @@
 <template>
-    <div class="Test3">
+    <div class="Test3" ref="Test3">
         <div class="innerBox">
             <img src="@/assets/test3.png" alt="">
         </div>
@@ -7,6 +7,15 @@
 </template>
 
 <script setup>
+import { ref, inject, watch, computed } from 'vue'
+import usePercent from '@/hooks/usePercent'
+
+const Test3 = ref()
+
+const per0 = usePercent(Test3,0) // 滚入
+const per1 = usePercent(Test3,1) // 吸附
+const per2 = usePercent(Test3,2) // 滚出
+
 
 </script>
 
@@ -40,5 +49,8 @@
 img{
     height: 400px;
     /* width: 100%; */
+    transform-origin: right center;
+    transform: translateX( v-bind(" per1 + '%' ") ) scale( v-bind(" per0*.01 ") );
+
 }
 </style>

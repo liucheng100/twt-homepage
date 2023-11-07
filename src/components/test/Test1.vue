@@ -14,9 +14,9 @@ const Test1 = ref()
 
 
 
-const per0 = usePercent(Test1,0)
-const per1 = usePercent(Test1,1)
-const per2 = usePercent(Test1,2)
+const per0 = usePercent(Test1,0) // 滚入
+const per1 = usePercent(Test1,1) // 吸附
+const per2 = usePercent(Test1,2) // 滚出
 watchEffect(() => {
     // console.log('Test1的per0:  ',per0.value)
     // console.log('Test1的per1:  ',per1.value)
@@ -44,6 +44,11 @@ watch(isPc, (to) => {
     top: -14px;
     /* z-index不设置默认为0 */
     /* z-index: 0; */
+
+    /* 动画 */
+    transform: translateY( v-bind(" -per2*2.3 + 'px' ") ) scale( v-bind(" 1-(per2*.01*.5) ") );
+    opacity: v-bind(" 1-per2/100 ");
+    /* 这里动画只是一个使用演示，实际开发中按需求精调 */
 }
 
 img {
